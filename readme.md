@@ -1,6 +1,8 @@
 # Simple RoR project by Cheezy
 
-** Check out my update toward the end of this doc
+```
+** Check out my update toward the end of this doc **
+```
 
 == Puppies example application
 
@@ -41,6 +43,15 @@ Run the docker build as follows:
 
 docker build -t drtran/puppies .
 docker run -p 3000:3000 -it drtran/puppies
+docker push drtran/puppies
 
 ```
+** In order to push, you would need to login to docker hub via `docker login` command.
+In this example, I pushed the image into my own login @ docker hub. You would need to get 
+your own login to do that.
 
+for openshift:
+
+``` sh
+oc adm policy add-scc-to-user anyuid -z default
+```
