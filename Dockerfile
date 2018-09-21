@@ -18,13 +18,17 @@ RUN rake db:create
 RUN rake db:migrate
 RUN rake db:seed
 
+USER root
 
-RUN chown -R ruby:ruby /usr/ruby/app/db
+RUN chmod -R 777 /usr/ruby/app
+RUN chown -R ruby:ruby /usr/ruby/app
 
 RUN ls -alR /usr/ruby/app/db
+RUN ls -al /usr/ruby/app
 
 EXPOSE 3000
 
+USER ruby
 
 CMD ["rails", "s", "-b", "0.0.0.0"]
 
