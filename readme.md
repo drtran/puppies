@@ -1,3 +1,7 @@
+# Simple RoR project by Cheezy
+
+** Check out my update toward the end of this doc
+
 == Puppies example application
 
 This is an example application that I am developing to use in an ATDD course as well
@@ -27,3 +31,16 @@ This will populate the database with a few sample puppies. You may need run thee
 
 Note:  If you had already executed the 'rails s', you may want to stop it by pressing Control-C before you seed the database.
 When the rake command completes, execute 'rails s' again to start the server again.
+
+# Containerized the app
+
+I created a Dockerfile to containerize the puppies app.
+Run the docker build as follows:
+
+``` bash
+
+docker build -t drtran/puppies .
+docker run -p 3000:3000 -it drtran/puppies
+
+```
+
