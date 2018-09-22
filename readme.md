@@ -35,17 +35,21 @@ Note:  If you had already executed the 'rails s', you may want to stop it by pre
 When the rake command completes, execute 'rails s' again to start the server again.
 
 # Containerized the app
+By Kiet T. Tran
 
 I created a Dockerfile to containerize the puppies app.
 Run the docker build as follows:
 
-``` bash
+``` sh
 
 docker build -t drtran/puppies .
-docker run -p 3000:3000 -it drtran/puppies
 docker push drtran/puppies
+docker run -p 3000:3000 -it drtran/puppies
 
 ```
+
+URL: `http://localhost:3000`
+
 ** In order to push, you would need to login to docker hub via `docker login` command.
 In this example, I pushed the image into my own login @ docker hub. You would need to get 
 your own login to do that.
@@ -53,5 +57,10 @@ your own login to do that.
 for openshift:
 
 ``` sh
-oc adm policy add-scc-to-user anyuid -z default
+oc new-app --name=puppies drtran/puppies
+oc expose svc puppies
 ```
+
+My website on the Red Hat's Openshift Online: 
+`http://puppies-drtran.7e14.starter-us-west-2.openshiftapps.com/`
+
